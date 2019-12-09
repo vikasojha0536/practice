@@ -45,7 +45,8 @@ public class Product extends AbstractEntity {
         return attributes;
     }
 
-    public void setAttributes(Map<String, String> attributes) {
+    public Product setAttributes(Map<String, String> attributes) {
         this.attributes = attributes;
+        return this;
     }
 }

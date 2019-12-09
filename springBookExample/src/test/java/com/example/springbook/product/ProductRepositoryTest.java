@@ -3,6 +3,7 @@ package com.example.springbook.product;
 import com.example.springbook.modal.Product;
 import com.example.springbook.repository.ProductRepository;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +13,9 @@ import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 import static com.example.springbook.util.CoreMatchers.named;
@@ -33,26 +36,25 @@ public class ProductRepositoryTest {
         product = repository.save(product);
     }
 
-    @Test
-    public void lookupProductsByDescription() {
+    @BeforeEach
+    public void setup(){
+        Map<String, String> attributes = new HashMap<>();
+        attributes.put("connector", "plug");
         Product ipad = new Product().setName("iPad bag").setDescription("Apple tablet device").setPrice(new BigDecimal("499.0"));
         Product mac = new Product().setName("MacBook Pro").setDescription("Apple notebook").setPrice(new BigDecimal("1299.0"));
-        Product dock = new Product().setName("Dock").setDescription("Dock for iPhone/iPad").setPrice(new BigDecimal("49.0"));
+        Product dock = new Product().setName("Dock").setDescription("Dock for iPhone/iPad").setPrice(new BigDecimal("49.0")).setAttributes(attributes);
         List<Product> products = new ArrayList<>();
         products.add(ipad);
         products.add(mac);
         products.add(dock);
-       repository.saveAll(products);
+        repository.saveAll(products);
+    }
+
+    @Test
+    public void lookupProductsByDescription() {
+
         Pageable pageable = PageRequest.of(0, 1, DESC, "name");
         Page<Product> page = repository.findByDescriptionContaining("Apple", pageable);
-        Pageable pageable1 = page.
-        assertThat(page.getContent(), hasSize(1));
-        assertThat(page, Matchers.hasItems(named("iPad bag")));
-        assertThat(page.getTotalElements(), is(2L));
-        assertThat(page.isFirst(), is(true));
-        assertThat(page.isLast(), is(false));
-        assertThat(page.hasNext(), is(true));
-
         assertThat(page.getContent(), hasSize(1));
         assertThat(page, Matchers.hasItems(named("iPad bag")));
         assertThat(page.getTotalElements(), is(2L));
@@ -61,5 +63,10 @@ public class ProductRepositoryTest {
         assertThat(page.hasNext(), is(true));
     }
 
+    @Test
+    public void findsProductsByAttributes() {
 
+        List<Product> products = repository.findByAttributeAndValue("connector", "plug");
+        assertThat(products, Matchers. hasItems(named("Dock")));
+    }
 }
