@@ -1,6 +1,10 @@
 package com.example.springbook.modal;
 
-public class EmailAddress {
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+
+@Embeddable
+public class EmailAddress{
     private String value;
 
     public String getValue() {

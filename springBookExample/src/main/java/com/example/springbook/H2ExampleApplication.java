@@ -12,21 +12,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @SpringBootApplication
-public class H2ExampleApplication implements CommandLineRunner {
+public class H2ExampleApplication {
 
 
 	@Autowired
 	private ProductRepository repository;
-
 	public static void main(String[] args) {
 		SpringApplication.run(H2ExampleApplication.class, args);
-	}
-
-
-	@Override
-	public void run(String... args) throws Exception {
-		Product product = new Product().setName("Camera bag").setPrice(new BigDecimal("49.99"));
-
-		product = repository.save(product);
 	}
 }

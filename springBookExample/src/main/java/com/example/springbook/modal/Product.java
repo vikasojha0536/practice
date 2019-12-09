@@ -27,8 +27,9 @@ public class Product extends AbstractEntity {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Product setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public BigDecimal getPrice() {

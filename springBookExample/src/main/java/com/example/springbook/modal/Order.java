@@ -1,8 +1,6 @@
 package com.example.springbook.modal;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,10 +14,10 @@ public class Order extends AbstractEntity{
     @ManyToOne
     private Address billingAddress;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Address shippingAddress;
 
-
+    @OneToMany
     private Set<LineItem> lineItems = new HashSet<>();
 
     public Customer getCustomer() {

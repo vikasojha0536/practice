@@ -12,7 +12,7 @@ public class Customer extends AbstractEntity {
     private EmailAddress emailAddress;
 
     @OneToMany
-    private Set<Address> addresses = new HashSet<Address>();
+    private Set<Address> addresses = new HashSet<>();
 
     public String getFirstname() {
         return firstname;
