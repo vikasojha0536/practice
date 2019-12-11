@@ -1,4 +1,8 @@
 rootProject.name = 'hibernateExample'
 include 'springBookExample'
 include 'simpleHibernateExample'
+include 'hibernateElementCollectionAndEagerFetch'
+include 'oneToOneMappingExample'
+include 'oneToOneBiderectionalMappingExample'
+include 'oneToManyMappingExample'
 
