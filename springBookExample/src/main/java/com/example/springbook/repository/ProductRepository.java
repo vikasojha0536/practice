@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    Product save(Product entity);
+
     Page<Product> findByDescriptionContaining(String description, Pageable pageable);
 
     @Query("select p from Product p where p.attributes[?1] = ?2")

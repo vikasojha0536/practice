@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import static com.example.springbook.util.CoreMatchers.named;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
@@ -34,6 +33,8 @@ public class ProductRepositoryTest {
     public void createProduct() {
         Product product = new Product().setName("Camera bag").setPrice(new BigDecimal("49.99"));
         product = repository.save(product);
+        Product abv = product.setName("ABV");
+        repository.save(abv);
     }
 
     @BeforeEach

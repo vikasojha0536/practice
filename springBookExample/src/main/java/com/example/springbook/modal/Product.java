@@ -1,5 +1,6 @@
 package com.example.springbook.modal;
 
+import javax.persistence.Cacheable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import java.math.BigDecimal;
@@ -7,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Entity
+@Cacheable
 public class Product extends AbstractEntity {
     private String name;
     private String description;

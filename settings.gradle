@@ -5,4 +5,5 @@ include 'hibernateElementCollectionAndEagerFetch'
 include 'oneToOneMappingExample'
 include 'oneToOneBiderectionalMappingExample'
 include 'oneToManyMappingExample'
+include 'hibernateCache'
 

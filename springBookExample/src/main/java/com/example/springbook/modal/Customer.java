@@ -1,5 +1,6 @@
 package com.example.springbook.modal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
@@ -11,7 +12,7 @@ public class Customer extends AbstractEntity {
 
     private EmailAddress emailAddress;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Address> addresses = new HashSet<>();
 
     public String getFirstname() {
