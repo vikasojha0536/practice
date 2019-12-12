@@ -6,4 +6,5 @@ include 'oneToOneMappingExample'
 include 'oneToOneBiderectionalMappingExample'
 include 'oneToManyMappingExample'
 include 'hibernateCache'
+include 'hibernateSecondlevelCache'
 

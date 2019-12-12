@@ -1,4 +1,4 @@
-package com.example.h2Example.repository;
+package com.example.h2Example.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -6,6 +6,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+/**
+ * @author kishan Kumar
+ */
 public class HibernateUtil {
   private static StandardServiceRegistry standardServiceRegistry;
   private static SessionFactory sessionFactory;
